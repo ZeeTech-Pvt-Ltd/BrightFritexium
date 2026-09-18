@@ -1,0 +1,44 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:brightfritexium.com)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5190/)",
+      "Bash(curl -s http://localhost:5190/)",
+      "Bash(curl -s -I http://localhost:5190/)",
+      "Bash(tasklist //FI \"PID eq 19972\")",
+      "Bash(wmic process *)",
+      "Bash(powershell -NoProfile -Command \"Get-CimInstance Win32_Process -Filter 'ProcessId=19972' | Select-Object -ExpandProperty CommandLine\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\" http://localhost:5191/)",
+      "Bash(curl -s http://localhost:5191/)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\" http://localhost:5192/)",
+      "Bash(curl -s http://localhost:5192/)",
+      "Bash(curl -s -o /dev/null -w \"dev server: HTTP %{http_code}\\\\n\" http://localhost:5192/)",
+      "Bash(curl -s http://localhost:5192/src/App.jsx)",
+      "Bash(curl -s http://localhost:5192/src/sections/Hero.jsx)",
+      "Bash(curl -s http://localhost:5192/src/components/Header.jsx)",
+      "Bash(curl -s -o /dev/null -w \"dev: HTTP %{http_code}\\\\n\" http://localhost:5192/)",
+      "Bash(curl -s -o /dev/null -w \"home: %{http_code} \" http://localhost:5192/)",
+      "Bash(curl -s -o /dev/null -w \"faq: %{http_code}\\\\n\" http://localhost:5192/faq)",
+      "Bash(curl -s -I https://brightfritexium.io/)",
+      "Bash(curl -s -o /dev/null -w \"favicon: %{http_code}\\\\n\" http://localhost:5192/favicon.svg)",
+      "Bash(curl -s -o /dev/null -w \"privacy: %{http_code} \" http://localhost:5192/privacy-policy)",
+      "Bash(curl -s -o /dev/null -w \"terms: %{http_code} \" http://localhost:5192/terms-of-use)",
+      "Bash(curl -s -o /dev/null -w \"risk: %{http_code}\\\\n\" http://localhost:5192/risk-disclosure)",
+      "Bash(curl -s -o /dev/null -w \"contact: %{http_code}\\\\n\" http://localhost:5192/contact-us)",
+      "Bash(curl -s -o /dev/null -w \"how-it-works: %{http_code}\\\\n\" http://localhost:5192/how-it-works)",
+      "Bash(npx playwright *)",
+      "Bash(npm ls *)",
+      "Bash(mkdir -p C:/tmp/bf-shots)",
+      "Bash(node bf-responsive.js)",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(node bf-sections.js)",
+      "Bash(node bf-check2.js)",
+      "Bash(rm -f \"c:/Users/samee/playwright-tests/bf-responsive.js\" \"c:/Users/samee/playwright-tests/bf-sections.js\" \"c:/Users/samee/playwright-tests/bf-jpeg.js\" \"c:/Users/samee/playwright-tests/bf-clip.js\" \"c:/Users/samee/playwright-tests/bf-interact.js\" \"c:/Users/samee/playwright-tests/bf-check2.js\" && echo cleaned)",
+      "WebFetch(domain:traderai.ai)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\samee\\playwright-tests",
+      "c:\\Users\\samee\\playwright-tests"
+    ]
+  }
+}
