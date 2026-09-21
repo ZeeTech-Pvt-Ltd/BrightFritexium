@@ -26,13 +26,41 @@ function ScrollToTop() {
   return null;
 }
 
+// Hover prefetch: warm the route chunk while the pointer is on the link,
+// so navigation feels instant instead of flashing the loader.
+const PREFETCH = {
+  '/about-us': () => import('./pages/AboutUs.jsx'),
+  '/how-it-works': () => import('./pages/HowItWorks.jsx'),
+  '/why-invest': () => import('./pages/WhyInvest.jsx'),
+  '/faq': () => import('./pages/Faqs.jsx'),
+  '/contact-us': () => import('./pages/Contacts.jsx'),
+  '/sign-up': () => import('./pages/SignUp.jsx'),
+  '/sign-in': () => import('./pages/SignIn.jsx'),
+  '/thank-you': () => import('./pages/ThankYou.jsx'),
+  '/privacy-policy': () => import('./pages/PrivacyPolicy.jsx'),
+  '/terms-of-use': () => import('./pages/TermsOfUse.jsx'),
+  '/risk-disclosure': () => import('./pages/RiskDisclosure.jsx'),
+};
+
+export function prefetchPage(path) {
+  PREFETCH[path]?.();
+}
+
+function PageLoader() {
+  return (
+    <div className="page-loader">
+      <span className="page-loader__spinner" aria-hidden="true" />
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <>
       <ScrollToTop />
       <Header />
       <main>
-        <Suspense fallback={<div className="section section--deep" />}>
+        <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about-us" element={<AboutUs />} />

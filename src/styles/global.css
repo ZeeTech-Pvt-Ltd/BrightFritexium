@@ -162,8 +162,32 @@ button {
 
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(14px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+/* ---------- Page loader ---------- */
+
+.page-loader {
+  min-height: 55vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-loader__spinner {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid var(--line-soft);
+  border-top-color: var(--cyan);
+  animation: loader-spin 0.8s linear infinite;
+}
+
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .reveal.is-visible {

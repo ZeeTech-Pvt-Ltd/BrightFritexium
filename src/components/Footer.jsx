@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import Logo from './Logo.jsx';
 import Icon from './Icon.jsx';
 import { NAV_LINKS, FOOTER, SITE } from '../data/content.js';
+import { prefetchPage } from '../App.jsx';
 
 export default function Footer() {
   return (
@@ -21,7 +22,9 @@ export default function Footer() {
             <ul className="footer__links">
               {NAV_LINKS.filter((l) => l.to !== '/').map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to}>{l.label}</Link>
+                  <Link to={l.to} onMouseEnter={() => prefetchPage(l.to)}>
+                    {l.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -32,7 +35,9 @@ export default function Footer() {
             <ul className="footer__links">
               {FOOTER.legal.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to}>{l.label}</Link>
+                  <Link to={l.to} onMouseEnter={() => prefetchPage(l.to)}>
+                    {l.label}
+                  </Link>
                 </li>
               ))}
             </ul>
