@@ -1,6 +1,5 @@
 import useMeta from '../hooks/useMeta.js';
 import BelowTheFold from '../components/BelowTheFold.jsx';
-import HorizonDivider from '../components/HorizonDivider.jsx';
 import Hero from '../sections/Hero.jsx';
 import MarketTicker from '../sections/MarketTicker.jsx';
 import StatsBand from '../sections/StatsBand.jsx';
@@ -35,7 +34,6 @@ export default function Home() {
     <>
       <Hero />
       <MarketTicker />
-      <HorizonDivider />
       {/* Below the fold: batches mount on idle, staggered so no single long task */}
       <BelowTheFold>
         <StatsBand />
@@ -44,7 +42,6 @@ export default function Home() {
       <BelowTheFold delay={120}>
         <Portfolio />
         <Calculator />
-        <HorizonDivider />
         <ThreeSteps />
       </BelowTheFold>
       <BelowTheFold delay={240}>

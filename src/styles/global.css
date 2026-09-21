@@ -720,35 +720,6 @@ button {
   border-radius: 8px !important;
 }
 
-/* ---------- Horizon divider (brand signature) ---------- */
-
-.horizon {
-  height: 1px;
-  max-width: 240px;
-  margin: 0 auto;
-  position: relative;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--cyan) 30%,
-    var(--gold) 50%,
-    var(--cyan) 70%,
-    transparent
-  );
-}
-
-.horizon::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
-  width: 7px;
-  height: 7px;
-  background: var(--gold);
-  border-radius: 1.5px;
-}
-
 /* ---------- Ticker ---------- */
 
 .ticker {
@@ -2157,6 +2128,18 @@ button {
     max-width: 560px;
   }
 
+  /* single-column hero: shrink the visual to the terminal so the floating
+     badges sit on its corners, and drop the tilted back cards */
+  .hero__visual {
+    max-width: 560px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero__card {
+    display: none;
+  }
+
   .cards-grid--4 {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2287,6 +2270,10 @@ button {
   }
 
   .transparency__panel {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio__mini {
     grid-template-columns: 1fr;
   }
 

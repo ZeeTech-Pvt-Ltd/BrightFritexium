@@ -29,7 +29,6 @@ export const HERO = {
   steps: [
     'Register in 2 minutes',
     'Verify your identity securely',
-    'Fund from A$250 - your vault starts working',
   ],
   trust: ['Custody insured', 'Transparent pricing', 'Start with A$250'],
 };
