@@ -461,12 +461,6 @@ export const RATING = {
   quote: 'An intuitive platform with automation built in and real learning resources alongside it.',
 };
 
-export const CHAT = {
-  persona: 'Olivia',
-  role: 'Onboarding Guide',
-  greeting: "Hi, I'm Olivia - your onboarding guide. Need a hand getting started?",
-};
-
 export const FOOTER = {
   blurb:
     'BrightFritexium is a digital wealth platform for verified Australian residents. Segregated vaults, cold storage and audited controls - protected at every layer.',
