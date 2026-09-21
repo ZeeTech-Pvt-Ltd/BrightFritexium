@@ -19,7 +19,7 @@ function CountUp({ text }) {
         if (!e.isIntersecting) return;
         io.disconnect();
         const t0 = performance.now();
-        const dur = 1300;
+        const dur = 900;
         const tick = (t) => {
           const p = Math.min(1, (t - t0) / dur);
           const eased = 1 - Math.pow(1 - p, 3);
