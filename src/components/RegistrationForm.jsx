@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
-import intlTelInput from 'intl-tel-input';
 import 'intl-tel-input/dist/css/intlTelInput.min.css';
 import { SITE } from '../data/content.js';
 
@@ -29,52 +28,73 @@ export default function RegistrationForm({
     const input = phoneRef.current;
     if (!input || itiRef.current) return;
 
-    const iti = intlTelInput(input, {
-      // AU flag + dial code render instantly; a background geo check refines it later.
-      initialCountry: 'au',
-    });
-    itiRef.current = iti;
+    let destroyed = false;
 
-    // Attach utils immediately so the example placeholder + full validation
-    // work from page load rather than waiting for first focus.
-    utilsReady.current = new Promise((r) => {
-      intlTelInput
-        .attachUtils(() => import('intl-tel-input/utils'))
-        .then(r)
-        .catch(() => r());
-    });
-
-    // Quietly refine the country from the visitor's IP - but never clobber
-    // anything the user has already typed (ipapi.co is Cloudflare-blocked
-    // on localhost, so ipwho.is leads the chain).
+    // Lazy-load the library so its JS stays off the critical path. Until it
+    // arrives the field is a plain tel input with a static placeholder.
     (async () => {
-      let code = '';
+      let itiMod;
       try {
-        const res = await fetch('https://ipwho.is/');
-        const data = await res.json();
-        code = data.country_code;
+        itiMod = await import('intl-tel-input');
       } catch {
+        return; // plain input remains fully usable
+      }
+      if (destroyed) return;
+
+      const iti = itiMod.default(input, {
+        // AU flag + dial code render instantly; a background geo check refines it later.
+        initialCountry: 'au',
+      });
+      itiRef.current = iti;
+
+      // Validators + example placeholder attach on idle or first focus -
+      // whichever comes first - never during initial page load.
+      const attachUtils = () => {
+        if (utilsReady.current) return;
+        utilsReady.current = new Promise((r) => {
+          itiMod.default
+            .attachUtils(() => import('intl-tel-input/utils'))
+            .then(r)
+            .catch(() => r());
+        });
+      };
+      input.addEventListener('focus', attachUtils, { once: true });
+      const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 2000));
+      idle(attachUtils);
+
+      // Quietly refine the country from the visitor's IP - but never clobber
+      // anything the user has already typed (ipapi.co is Cloudflare-blocked
+      // on localhost, so ipwho.is leads the chain).
+      (async () => {
+        let code = '';
         try {
-          const res = await fetch('https://ipapi.co/json/');
+          const res = await fetch('https://ipwho.is/');
           const data = await res.json();
           code = data.country_code;
         } catch {
-          code = '';
+          try {
+            const res = await fetch('https://ipapi.co/json/');
+            const data = await res.json();
+            code = data.country_code;
+          } catch {
+            code = '';
+          }
         }
-      }
-      // Only update if this iti instance is still the live one (StrictMode
-      // double-mount destroys the first instance before its fetch resolves).
-      if (code && input.value.trim() === '' && itiRef.current === iti) {
-        try {
-          iti.setCountry(code);
-        } catch {
-          /* instance was torn down mid-flight */
+        // Only update if this iti instance is still the live one (StrictMode
+        // double-mount destroys the first instance before its fetch resolves).
+        if (code && input.value.trim() === '' && itiRef.current === iti) {
+          try {
+            iti.setCountry(code);
+          } catch {
+            /* instance was torn down mid-flight */
+          }
         }
-      }
+      })();
     })();
 
     return () => {
-      iti.destroy();
+      destroyed = true;
+      itiRef.current?.destroy();
       itiRef.current = null;
       utilsReady.current = null;
     };
@@ -231,6 +251,7 @@ export default function RegistrationForm({
           ref={phoneRef}
           name="phone"
           type="tel"
+          placeholder="Enter your phone number"
           autoComplete="tel"
           className={errors.phone ? 'input-error' : ''}
         />
