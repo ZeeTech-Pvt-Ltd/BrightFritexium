@@ -675,6 +675,13 @@ button {
 
 /* ---------- intl-tel-input (light theme) ---------- */
 
+/* serve one self-hosted 1x sprite for all DPIs - saves the 87KB @2x
+   download on mobile without losing flags */
+:root {
+  --iti-path-flags-1x: url(/flags.webp);
+  --iti-path-flags-2x: url(/flags.webp);
+}
+
 .iti {
   width: 100%;
   display: block;
