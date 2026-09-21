@@ -79,15 +79,6 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="hero__payments">
-              {HERO.payments.map((p) => (
-                <span className="hero__pay-chip" key={p}>
-                  <Icon name="lock" size={12} />
-                  {p}
-                </span>
-              ))}
-            </div>
-
             <div className="hero__float hero__float--rating">
               <Icon name="star" size={14} />
               4.6/5 member rating

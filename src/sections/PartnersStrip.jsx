@@ -1,20 +1,16 @@
-import Reveal from '../components/Reveal.jsx';
-
-// Abstract partner marks (decorative) - no partner names are claimed.
-const MARKS = [
-  'mark-1', 'mark-2', 'mark-3', 'mark-4', 'mark-5', 'mark-6', 'mark-7', 'mark-8',
-];
+const PARTNERS = Array.from({ length: 8 }, (_, i) => i + 1);
 
 export default function PartnersStrip() {
+  // Rendered twice so the translateX(-50%) loop is seamless.
+  const logos = [...PARTNERS, ...PARTNERS];
   return (
     <section className="section section--deep partners" aria-label="Our partners">
-      <div className="container">
-        <Reveal className="partners__head">
-          <span className="partners__label">Our partners</span>
-        </Reveal>
-        <div className="partners__row">
-          {MARKS.map((m) => (
-            <span key={m} className={`partners__mark ${m}`} aria-hidden="true" />
+      <div className="partners__viewport">
+        <div className="partners__track">
+          {logos.map((n, i) => (
+            <span className="partners__logo" key={i}>
+              <img src={`/partners/partner-${n}.svg`} alt={`Partner ${n}`} loading="lazy" />
+            </span>
           ))}
         </div>
       </div>

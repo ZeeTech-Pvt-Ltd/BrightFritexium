@@ -32,7 +32,6 @@ export const HERO = {
     'Verify your identity securely',
   ],
   trust: ['Custody insured', 'Transparent pricing', 'Start with A$250'],
-  payments: ['Visa', 'Mastercard', 'PayPal', 'Secure payment'],
 };
 
 // Market ticker - indicative prices, refreshed for display purposes only.
@@ -227,11 +226,6 @@ export const FEATURES = {
       text: 'Forex, equities, crypto and commodities in one place.',
     },
     {
-      icon: 'calendar',
-      title: 'Guided setup',
-      text: 'A step-by-step guide takes you from signup to first trade.',
-    },
-    {
       icon: 'headset',
       title: '24/7 support',
       text: 'Real humans on standby around the clock.',
@@ -421,7 +415,7 @@ export const GLOBAL = {
 
 export const PAYMENTS = {
   title: 'We accept payments from all over the world',
-  methods: ['Bank transfer', 'E-wallet', 'Card', 'PayPal'],
+  methods: ['Visa', 'Mastercard', 'PayPal', 'Bank transfer'],
 };
 
 export const ABOUT_SUMMARY = {

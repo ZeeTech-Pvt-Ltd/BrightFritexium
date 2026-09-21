@@ -1,30 +1,47 @@
 import Reveal from '../components/Reveal.jsx';
 import SectionHead from '../components/SectionHead.jsx';
-import { THREE_STEPS } from '../data/content.js';
+import RegistrationForm from '../components/RegistrationForm.jsx';
+import { THREE_STEPS, HERO } from '../data/content.js';
 
-// Zigzag timeline: numbered circles on a central gradient rail,
-// content cards alternating left/right (stacked on mobile).
+// Stepper panel + embedded form side by side - the conversion point sits
+// right against the steps instead of waiting for the end of the page.
 export default function ThreeSteps() {
   return (
     <section className="section section--surface">
       <div className="container">
         <SectionHead title={THREE_STEPS.title} lead={THREE_STEPS.lead} />
-        <div className="steps">
-          {THREE_STEPS.items.map((s, i) => (
-            <Reveal
-              className={`steps__item${i % 2 ? ' steps__item--flip' : ''}`}
-              delay={i * 100}
-              key={s.title}
-            >
-              <div className="steps__circle">
-                <span>{i + 1}</span>
+        <div className="steps-split">
+          <Reveal className="steps">
+            {THREE_STEPS.items.map((s, i) => (
+              <div className="steps__row" key={s.title}>
+                <span className="steps__badge">{String(i + 1).padStart(2, '0')}</span>
+                <div>
+                  <h3 className="card__title">{s.title}</h3>
+                  <p className="card__text">{s.text}</p>
+                </div>
               </div>
-              <div className="steps__content">
-                <h3 className="card__title">{s.title}</h3>
-                <p className="card__text">{s.text}</p>
+            ))}
+          </Reveal>
+
+          <Reveal className="steps__form" delay={120}>
+            <div className="terminal">
+              <div className="terminal__bar">
+                <span className="terminal__dots">
+                  <span className="t--r" />
+                  <span className="t--a" />
+                  <span className="t--g" />
+                </span>
+                brightfritexium - create account
               </div>
-            </Reveal>
-          ))}
+              <div className="terminal__body">
+                <RegistrationForm
+                  idPrefix="steps"
+                  notice={HERO.formNotice}
+                  buttonLabel={HERO.formButton}
+                />
+              </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
