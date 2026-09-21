@@ -232,12 +232,13 @@ button {
 }
 
 .btn--cyan {
-  background: linear-gradient(120deg, #35e8ff, var(--cyan-deep));
+  background: #0db4e8;
   color: #04121a;
   box-shadow: 0 6px 24px rgba(8, 145, 196, 0.25);
 }
 
 .btn--cyan:hover {
+  background: #0896c9;
   transform: translateY(-2px);
   box-shadow: 0 10px 32px rgba(8, 145, 196, 0.4);
 }
@@ -381,29 +382,8 @@ button {
   align-items: center;
 }
 
-/* depth composition around the sign-up terminal */
 .hero__visual {
   position: relative;
-}
-
-.hero__card {
-  position: absolute;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  pointer-events: none;
-}
-
-.hero__card--back1 {
-  inset: -14px 26px auto 14px;
-  height: 100%;
-  transform: rotate(-3deg);
-}
-
-.hero__card--back2 {
-  inset: -8px 14px auto 26px;
-  height: 100%;
-  transform: rotate(2deg);
 }
 
 .terminal {
@@ -446,10 +426,6 @@ button {
 }
 
 @media (max-width: 640px) {
-  .hero__card {
-    display: none;
-  }
-
   .hero__float--rating {
     right: 0;
   }
@@ -1403,9 +1379,9 @@ button {
 }
 
 .steps__row:hover .steps__badge {
-  background: linear-gradient(135deg, #0db4e8, #05769f);
+  background: #0db4e8;
   border-color: transparent;
-  color: #ffffff;
+  color: #04121a;
   transform: scale(1.06);
 }
 
@@ -2452,9 +2428,9 @@ button {
 }
 
 .about__tab.is-active {
-  background: linear-gradient(135deg, #0db4e8, #05769f);
+  background: #0db4e8;
   border-color: transparent;
-  color: #ffffff;
+  color: #04121a;
 }
 
 .about__content ul {
@@ -2547,15 +2523,11 @@ button {
   }
 
   /* single-column hero: shrink the visual to the terminal so the floating
-     badges sit on its corners, and drop the tilted back cards */
+     badges sit on its corners */
   .hero__visual {
     max-width: 560px;
     margin: 0 auto;
     width: 100%;
-  }
-
-  .hero__card {
-    display: none;
   }
 
   .cards-grid--4 {

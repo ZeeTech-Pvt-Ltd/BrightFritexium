@@ -58,9 +58,6 @@ export default function Hero() {
           </div>
 
           <div className="hero__visual">
-            <div className="hero__card hero__card--back1" />
-            <div className="hero__card hero__card--back2" />
-
             <div className="terminal">
               <div className="terminal__bar">
                 <span className="terminal__dots">
