@@ -64,7 +64,7 @@ export default function Testimonials() {
               {items.map((t) => (
                 <div className="quotes__item" style={{ flexBasis: `${100 / visible}%` }} key={t.name}>
                   <div className="quotes__card">
-                    <div className="quotes__stars" aria-label={`${t.stars} out of 5 stars`}>
+                    <div className="quotes__stars" role="img" aria-label={`${t.stars} out of 5 stars`}>
                       {Array.from({ length: 5 }, (_, s) => (
                         <Icon
                           key={s}

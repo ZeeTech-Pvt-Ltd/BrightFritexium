@@ -201,8 +201,8 @@ export default function RegistrationForm({
         </div>
       )}
 
-      {/* Honeypot field - hidden from humans */}
-      <input className="form__honey" type="text" name="website" tabIndex={-1} autoComplete="off" />
+      {/* Honeypot field - hidden from humans and assistive tech */}
+      <input className="form__honey" type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
       <div className="form__row">
         <div className="field">
@@ -269,11 +269,11 @@ export default function RegistrationForm({
             />
             <span>
               I have read and agree to the{' '}
-              <Link to="/privacy-policy" style={{ color: '#0891c4', textDecoration: 'underline' }}>
+              <Link to="/privacy-policy" style={{ color: '#05769f', textDecoration: 'underline' }}>
                 Privacy Policy
               </Link>{' '}
               and{' '}
-              <Link to="/terms-of-use" style={{ color: '#0891c4', textDecoration: 'underline' }}>
+              <Link to="/terms-of-use" style={{ color: '#05769f', textDecoration: 'underline' }}>
                 Terms &amp; Conditions
               </Link>
               .

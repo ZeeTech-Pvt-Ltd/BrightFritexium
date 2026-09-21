@@ -103,16 +103,7 @@ button {
   padding: 0;
 }
 
-/* dot-matrix grid for dark sections (digital horizon feel) */
-.section--deep::before,
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(8, 145, 196, 0.06) 1px, transparent 1px);
-  background-size: 26px 26px;
-  pointer-events: none;
-}
+/* (dot-matrix texture removed for paint performance) */
 
 .section-head {
   max-width: 720px;
@@ -336,7 +327,8 @@ button {
 .hero__glow {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
+  filter: blur(70px);
+  transform: translateZ(0);
   pointer-events: none;
 }
 
@@ -776,11 +768,11 @@ button {
 }
 
 .ticker__change.up {
-  color: var(--green);
+  color: #166534; /* dark enough for 4.5:1 on the light strip */
 }
 
 .ticker__change.down {
-  color: var(--red);
+  color: #991b1b; /* dark enough for 4.5:1 on the light strip */
 }
 
 .ticker .sep {
@@ -1188,7 +1180,7 @@ button {
   margin: 24px auto 0;
   font-family: var(--font-mono);
   font-size: 12.5px;
-  color: #6b7f9f;
+  color: var(--muted);
 }
 
 /* ---------- Security (split list) ---------- */
@@ -1945,7 +1937,7 @@ button {
 }
 
 .footer__disclaimer {
-  color: #6b7f9f;
+  color: var(--muted);
   font-size: 12.5px;
   max-width: 860px;
 }
