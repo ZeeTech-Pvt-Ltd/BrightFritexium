@@ -246,12 +246,13 @@ export default function RegistrationForm({
 
       <div className="field">
         <label htmlFor={fid('phone')}>Phone number</label>
+        {/* no placeholder: intl-tel-input generates a real example number
+            for whichever country is selected (e.g. 412 345 678 / 301 2345678) */}
         <input
           id={fid('phone')}
           ref={phoneRef}
           name="phone"
           type="tel"
-          placeholder="Enter your phone number"
           autoComplete="tel"
           className={errors.phone ? 'input-error' : ''}
         />
