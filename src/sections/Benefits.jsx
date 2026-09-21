@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router';
 import Reveal from '../components/Reveal.jsx';
 import SectionHead from '../components/SectionHead.jsx';
@@ -10,14 +10,30 @@ const aud = (n) => `A$${new Intl.NumberFormat('en-AU', { maximumFractionDigits: 
 // Live-looking demo chart: a random-walk series ticking every ~1.2s.
 // Clearly labelled as a demo feed - purely illustrative.
 function LiveChart() {
+  const boxRef = useRef(null);
+  const [playing, setPlaying] = useState(false);
   const [series, setSeries] = useState(() =>
     Array.from({ length: 60 }, (_, i) => 102000 + Math.sin(i / 6) * 900 + (Math.random() - 0.5) * 400)
   );
   const [price, setPrice] = useState(102480);
   const [up, setUp] = useState(true);
 
+  // Only animate while the chart is actually on screen - keeps the demo
+  // from burning main-thread time while it sits below the fold.
   useEffect(() => {
+    const el = boxRef.current;
+    if (!el) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const io = new IntersectionObserver(
+      ([entry]) => setPlaying(entry.isIntersecting),
+      { threshold: 0.2 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!playing) return;
     const id = setInterval(() => {
       setSeries((s) => {
         const last = s[s.length - 1];
@@ -27,9 +43,9 @@ function LiveChart() {
         setUp(delta >= 0);
         return [...s.slice(1), next];
       });
-    }, 1200);
+    }, 1600);
     return () => clearInterval(id);
-  }, []);
+  }, [playing]);
 
   const min = Math.min(...series) - 200;
   const max = Math.max(...series) + 200;
@@ -38,7 +54,7 @@ function LiveChart() {
     .join(' ');
 
   return (
-    <div className="livechart" aria-hidden="true">
+    <div className="livechart" ref={boxRef} aria-hidden="true">
       <div className="livechart__head">
         <span className="livechart__pair">
           <span className="livechart__dot" />
