@@ -55,17 +55,31 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="terminal">
-            <div className="terminal__bar">
-              <span className="terminal__dots">
-                <span className="t--r" />
-                <span className="t--a" />
-                <span className="t--g" />
-              </span>
-              brightfritexium - secure my account
+          <div className="hero__visual">
+            <div className="hero__card hero__card--back1" />
+            <div className="hero__card hero__card--back2" />
+
+            <div className="terminal">
+              <div className="terminal__bar">
+                <span className="terminal__dots">
+                  <span className="t--r" />
+                  <span className="t--a" />
+                  <span className="t--g" />
+                </span>
+                brightfritexium - secure my account
+              </div>
+              <div className="terminal__body">
+                <RegistrationForm idPrefix="hero" />
+              </div>
             </div>
-            <div className="terminal__body">
-              <RegistrationForm idPrefix="hero" />
+
+            <div className="hero__float hero__float--rating">
+              <Icon name="star" size={14} />
+              4.6/5 member rating
+            </div>
+            <div className="hero__float hero__float--cold">
+              <Icon name="snowflake" size={14} />
+              95% cold storage
             </div>
           </div>
         </div>

@@ -77,7 +77,6 @@ export default function Contacts() {
                 <RegistrationForm
                   idPrefix="contact"
                   title="Send us a message"
-                  subtitle="Drop your details and a real human replies within one business day."
                   buttonLabel="Send Message"
                 />
               </div>

@@ -1,13 +1,12 @@
 import { useState } from 'react';
+import { Link } from 'react-router';
 import Reveal from '../components/Reveal.jsx';
 import SectionHead from '../components/SectionHead.jsx';
+import Icon from '../components/Icon.jsx';
 import { CALCULATOR } from '../data/content.js';
 
-const aud = new Intl.NumberFormat('en-AU', {
-  style: 'currency',
-  currency: 'AUD',
-  maximumFractionDigits: 0,
-});
+// A$ prefix matches the site's copy ("A$250" etc.) - en-AU renders plain "$".
+const aud = (n) => `A$${new Intl.NumberFormat('en-AU', { maximumFractionDigits: 0 }).format(n)}`;
 
 // Compound projection: monthly-compounded growth of the lump sum plus regular top-ups.
 const project = ({ deposit, monthly, years, rate }) => {
@@ -21,16 +20,18 @@ const project = ({ deposit, monthly, years, rate }) => {
 export default function Calculator() {
   const [deposit, setDeposit] = useState(CALCULATOR.defaults.deposit);
   const [monthly, setMonthly] = useState(CALCULATOR.defaults.monthly);
-  const [years, setYears] = useState(CALCULATOR.defaults.years);
-  const [rate, setRate] = useState(CALCULATOR.defaults.rate);
 
-  const { balance, income } = project({ deposit, monthly, years, rate });
+  // Return rate and horizon are fixed (as on the reference site).
+  const { income } = project({
+    deposit,
+    monthly,
+    years: CALCULATOR.defaults.years,
+    rate: CALCULATOR.defaults.rate,
+  });
 
   const sliders = [
-    { key: 'deposit', label: 'Initial investment', value: deposit, fmt: aud.format(deposit), set: setDeposit, range: CALCULATOR.ranges.deposit },
-    { key: 'monthly', label: 'Reinvestment', value: monthly, fmt: `${aud.format(monthly)}/mo`, set: setMonthly, range: CALCULATOR.ranges.monthly },
-    { key: 'rate', label: 'Expected annual return', value: rate, fmt: `${rate}%`, set: setRate, range: CALCULATOR.ranges.rate },
-    { key: 'years', label: 'Horizon', value: years, fmt: `${years} year${years > 1 ? 's' : ''}`, set: setYears, range: CALCULATOR.ranges.years },
+    { key: 'deposit', label: 'Initial investment', value: deposit, fmt: aud(deposit), set: setDeposit, range: CALCULATOR.ranges.deposit },
+    { key: 'monthly', label: 'Reinvestment', value: monthly, fmt: aud(monthly), set: setMonthly, range: CALCULATOR.ranges.monthly },
   ];
 
   return (
@@ -40,31 +41,42 @@ export default function Calculator() {
 
         <Reveal className="calc">
           <div className="calc__controls">
-            {sliders.map((s) => (
-              <div className="calc__row" key={s.key}>
-                <div className="calc__row-head">
-                  <label htmlFor={`calc-${s.key}`}>{s.label}</label>
-                  <span className="calc__row-value">{s.fmt}</span>
+            {sliders.map((s) => {
+              const pct = ((s.value - s.range.min) / (s.range.max - s.range.min)) * 100;
+              return (
+                <div className="calc__row" key={s.key}>
+                  <div className="calc__row-head">
+                    <label htmlFor={`calc-${s.key}`}>
+                      {s.label} <b>{s.fmt}</b>
+                    </label>
+                  </div>
+                  <input
+                    id={`calc-${s.key}`}
+                    type="range"
+                    min={s.range.min}
+                    max={s.range.max}
+                    step={s.range.step}
+                    value={s.value}
+                    onChange={(e) => s.set(Number(e.target.value))}
+                    style={{
+                      background: `linear-gradient(90deg, var(--cyan) ${pct}%, var(--surface-2) ${pct}%)`,
+                    }}
+                  />
                 </div>
-                <input
-                  id={`calc-${s.key}`}
-                  type="range"
-                  min={s.range.min}
-                  max={s.range.max}
-                  step={s.range.step}
-                  value={s.value}
-                  onChange={(e) => s.set(Number(e.target.value))}
-                />
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="calc__output">
             <span className="calc__output-label">Projected monthly income</span>
-            <span className="calc__output-value">{aud.format(income)}</span>
+            <span className="calc__output-value">{aud(income)}</span>
             <span className="calc__output-sub">
-              from a projected balance of {aud.format(balance)} after {years} year{years > 1 ? 's' : ''}
+              With {aud(monthly)} reinvested · {aud(income)}/mo
             </span>
+            <Link className="btn btn--cyan calc__cta" to="/sign-up">
+              Sign Up now
+              <Icon name="arrow-right" size={17} />
+            </Link>
           </div>
         </Reveal>
 

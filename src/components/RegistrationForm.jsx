@@ -4,27 +4,24 @@ import intlTelInput from 'intl-tel-input';
 import 'intl-tel-input/dist/css/intlTelInput.min.css';
 import { SITE } from '../data/content.js';
 
-// Full-size validator package (~300KB) is attached lazily; the input renders instantly
-// with flag + dial code, and the validators arrive on first focus or after 4s idle.
-// v29's attachUtils() invokes its loader immediately, so it must NOT run at module scope.
+// Lead form with an intl-tel-input phone field. Utils are attached eagerly at
+// init so the example placeholder renders at page load (not on first focus).
 
 export default function RegistrationForm({
   idPrefix = 'hero',
   title = 'Create your account',
-  subtitle = 'Registration is limited to verified residents of Australia.',
   buttonLabel = 'Sign Up now',
   showConsent = true,
 }) {
   const navigate = useNavigate();
   const phoneRef = useRef(null);
   const itiRef = useRef(null);
-  const utilsDeferred = useRef(null);
+  const utilsReady = useRef(null);
   const [errors, setErrors] = useState({});
   const [formError, setFormError] = useState('');
   const [success, setSuccess] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [agreed, setAgreed] = useState(true);
-  const [phoneCountry, setPhoneCountry] = useState(null);
 
   const fid = (name) => `${idPrefix}-${name}`;
 
@@ -33,57 +30,53 @@ export default function RegistrationForm({
     if (!input || itiRef.current) return;
 
     const iti = intlTelInput(input, {
-      initialCountry: '',
-      // ipapi.co is Cloudflare-blocked on localhost, so ipwho.is leads the chain.
-      initialCountryLookup: async () => {
-        try {
-          const res = await fetch('https://ipwho.is/');
-          const data = await res.json();
-          return data.country_code || 'au';
-        } catch {
-          try {
-            const res = await fetch('https://ipapi.co/json/');
-            const data = await res.json();
-            return data.country_code || 'au';
-          } catch {
-            return 'au';
-          }
-        }
-      },
+      // AU flag + dial code render instantly; a background geo check refines it later.
+      initialCountry: 'au',
     });
     itiRef.current = iti;
 
-    // Warm up the validators on first focus - keeps the initial page load light.
-    const warm = () => {
-      if (utilsDeferred.current) return;
-      let resolveDeferred;
-      utilsDeferred.current = new Promise((r) => {
-        resolveDeferred = r;
-      });
+    // Attach utils immediately so the example placeholder + full validation
+    // work from page load rather than waiting for first focus.
+    utilsReady.current = new Promise((r) => {
       intlTelInput
         .attachUtils(() => import('intl-tel-input/utils'))
-        .then(resolveDeferred)
-        .catch(() => resolveDeferred());
-    };
-    const onFocus = () => {
-      warm();
-      input.removeEventListener('focus', onFocus);
-    };
-    input.addEventListener('focus', onFocus);
+        .then(r)
+        .catch(() => r());
+    });
 
-    // Keep the phone label in sync with the selected country (flag + dial code).
-    const onCountryChange = (e) => {
-      const c = e.detail;
-      setPhoneCountry(c ? { name: c.name, dialCode: c.dialCode } : null);
-    };
-    input.addEventListener('countrychange', onCountryChange);
+    // Quietly refine the country from the visitor's IP - but never clobber
+    // anything the user has already typed (ipapi.co is Cloudflare-blocked
+    // on localhost, so ipwho.is leads the chain).
+    (async () => {
+      let code = '';
+      try {
+        const res = await fetch('https://ipwho.is/');
+        const data = await res.json();
+        code = data.country_code;
+      } catch {
+        try {
+          const res = await fetch('https://ipapi.co/json/');
+          const data = await res.json();
+          code = data.country_code;
+        } catch {
+          code = '';
+        }
+      }
+      // Only update if this iti instance is still the live one (StrictMode
+      // double-mount destroys the first instance before its fetch resolves).
+      if (code && input.value.trim() === '' && itiRef.current === iti) {
+        try {
+          iti.setCountry(code);
+        } catch {
+          /* instance was torn down mid-flight */
+        }
+      }
+    })();
 
     return () => {
-      input.removeEventListener('focus', onFocus);
-      input.removeEventListener('countrychange', onCountryChange);
       iti.destroy();
       itiRef.current = null;
-      utilsDeferred.current = null;
+      utilsReady.current = null;
     };
   }, []);
 
@@ -112,9 +105,9 @@ export default function RegistrationForm({
       try {
         valid = iti.isValidNumber();
       } catch {
-        // v29's ensureUtils throws until utils are attached - wait briefly, then retry.
+        // utils may still be attaching - wait briefly, then retry.
         await Promise.race([
-          utilsDeferred.current || Promise.resolve(),
+          utilsReady.current || Promise.resolve(),
           new Promise((r) => setTimeout(r, 3000)),
         ]);
         try {
@@ -176,7 +169,6 @@ export default function RegistrationForm({
   return (
     <form className="form form-wrap" onSubmit={handleSubmit} noValidate>
       <h2 className="form__title">{title}</h2>
-      <p className="form__sub">{subtitle}</p>
 
       {formError && (
         <div className="form__error" role="alert">
@@ -233,9 +225,7 @@ export default function RegistrationForm({
       </div>
 
       <div className="field">
-        <label htmlFor={fid('phone')}>
-          Phone{phoneCountry ? ` (${phoneCountry.name} +${phoneCountry.dialCode})` : ''}
-        </label>
+        <label htmlFor={fid('phone')}>Phone number</label>
         <input
           id={fid('phone')}
           ref={phoneRef}
@@ -256,13 +246,13 @@ export default function RegistrationForm({
               onChange={(e) => setAgreed(e.target.checked)}
             />
             <span>
-              I agree to the{' '}
-              <Link to="/terms-of-use" style={{ color: '#2ee6ff', textDecoration: 'underline' }}>
-                Terms of Use
+              I have read and agree to the{' '}
+              <Link to="/privacy-policy" style={{ color: '#0891c4', textDecoration: 'underline' }}>
+                Privacy Policy
               </Link>{' '}
               and{' '}
-              <Link to="/privacy-policy" style={{ color: '#2ee6ff', textDecoration: 'underline' }}>
-                Privacy Policy
+              <Link to="/terms-of-use" style={{ color: '#0891c4', textDecoration: 'underline' }}>
+                Terms &amp; Conditions
               </Link>
               .
             </span>

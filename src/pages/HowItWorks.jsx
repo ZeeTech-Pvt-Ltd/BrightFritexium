@@ -2,8 +2,8 @@ import { Link } from 'react-router';
 import useMeta from '../hooks/useMeta.js';
 import Reveal from '../components/Reveal.jsx';
 import Icon from '../components/Icon.jsx';
+import { AnalystFlow } from '../sections/Analyst.jsx';
 import { THREE_STEPS, ANALYST } from '../data/content.js';
-// Icon is still used by the analyst section below.
 
 export default function HowItWorks() {
   useMeta({
@@ -28,12 +28,13 @@ export default function HowItWorks() {
           </p>
         </Reveal>
 
-        <div className="steps" style={{ marginTop: 56 }}>
+        <div className="hiw-steps" style={{ marginTop: 56 }}>
           {THREE_STEPS.items.map((s, i) => (
-            <Reveal className="steps__item" delay={i * 90} key={s.title}>
-              <div className="steps__circle">
-                <span>{i + 1}</span>
-              </div>
+            <Reveal className="hiw-steps__item" delay={i * 90} key={s.title}>
+              <span className="hiw-steps__num">{String(i + 1).padStart(2, '0')}</span>
+              <span className="card__icon">
+                <Icon name={s.icon} size={24} />
+              </span>
               <h3 className="card__title">{s.title}</h3>
               <p className="card__text">{s.text}</p>
             </Reveal>
@@ -42,30 +43,17 @@ export default function HowItWorks() {
       </div>
 
       <div className="container" style={{ marginTop: 72 }}>
-        <Reveal>
+        <Reveal style={{ textAlign: 'center' }}>
           <span className="section-label">Behind the scenes</span>
-          <h2 className="section-title" style={{ maxWidth: 720, marginBottom: 20 }}>
+          <h2 className="section-title" style={{ maxWidth: 720, margin: '0 auto 20px' }}>
             {ANALYST.title}
           </h2>
-          <p className="section-lead" style={{ maxWidth: 720 }}>{ANALYST.lead}</p>
+          <p className="section-lead" style={{ maxWidth: 720, margin: '16px auto 0' }}>
+            {ANALYST.lead}
+          </p>
         </Reveal>
-        <div className="analyst" style={{ marginTop: 40 }}>
-          {ANALYST.items.map((s, i) => (
-            <Reveal className="analyst__step" delay={i * 90} key={s.title}>
-              <span className="card__icon">
-                <Icon name={s.icon} size={24} />
-              </span>
-              <div>
-                <h3 className="card__title">{s.title}</h3>
-                <p className="card__text">{s.text}</p>
-              </div>
-              {i < ANALYST.items.length - 1 && (
-                <span className="analyst__arrow" aria-hidden="true">
-                  →
-                </span>
-              )}
-            </Reveal>
-          ))}
+        <div style={{ marginTop: 40 }}>
+          <AnalystFlow />
         </div>
 
         <Reveal style={{ textAlign: 'center', marginTop: 56 }}>

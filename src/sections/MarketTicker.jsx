@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
-import { CITY_TICKER } from '../data/content.js';
+import { MARKET_TICKER } from '../data/content.js';
 
-export default function CityTicker() {
+export default function MarketTicker() {
   const ref = useRef(null);
 
   // Animate only while the ticker is actually on screen - saves continuous
@@ -19,15 +19,15 @@ export default function CityTicker() {
   }, []);
 
   // Render the list twice so the translateX(-50%) loop is seamless.
-  const items = [...CITY_TICKER, ...CITY_TICKER];
+  const items = [...MARKET_TICKER, ...MARKET_TICKER];
   return (
     <div className="ticker" ref={ref} aria-hidden="true">
       <div className="ticker__viewport">
         {items.map((t, i) => (
           <span className="ticker__item" key={i}>
-            <b>{t.city}</b>
-            {t.action}
-            {t.value && <span className="ticker__value">{t.value}</span>}
+            <b>{t.k}</b>
+            <span className="ticker__price">{t.v}</span>
+            <span className={`ticker__change ${t.dir}`}>{t.change}</span>
             <span className="sep">◆</span>
           </span>
         ))}

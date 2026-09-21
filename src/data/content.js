@@ -34,16 +34,25 @@ export const HERO = {
   trust: ['Custody insured', 'Transparent pricing', 'Start with A$250'],
 };
 
-// Live transaction ticker - illustrative Australian member activity.
-export const CITY_TICKER = [
-  { city: 'Sydney', action: 'opened a Balanced vault', value: 'A$12,400' },
-  { city: 'Melbourne', action: 'started a recurring plan', value: 'A$250/mo' },
-  { city: 'Brisbane', action: 'withdrew to their bank', value: 'A$3,180' },
-  { city: 'Perth', action: 'staked ETH', value: 'A$8,900' },
-  { city: 'Adelaide', action: 'joined the Growth vault', value: 'A$15,200' },
-  { city: 'Canberra', action: 'switched to Income mode', value: 'A$41,000' },
-  { city: 'Hobart', action: 'opened a tax-smart vault', value: 'A$7,450' },
-  { city: 'Gold Coast', action: 'passed KYC in 6 minutes', value: '' },
+// Market ticker - indicative prices, refreshed for display purposes only.
+export const MARKET_TICKER = [
+  { k: 'BTC', v: 'A$102,480', change: '+2.4%', dir: 'up' },
+  { k: 'ETH', v: 'A$5,290', change: '+1.1%', dir: 'up' },
+  { k: 'SOL', v: 'A$312', change: '-0.8%', dir: 'down' },
+  { k: 'XRP', v: 'A$3.42', change: '+4.2%', dir: 'up' },
+  { k: 'BNB', v: 'A$1,180', change: '+0.6%', dir: 'up' },
+  { k: 'ADA', v: 'A$1.87', change: '-1.3%', dir: 'down' },
+  { k: 'DOGE', v: 'A$0.52', change: '+3.1%', dir: 'up' },
+  { k: 'AVAX', v: 'A$58.40', change: '+0.9%', dir: 'up' },
+];
+
+// Indicative allocation of the flagship Balanced vault.
+export const ALLOCATION = [
+  { label: 'Bitcoin', pct: 40, color: '#0896c9' },
+  { label: 'Ethereum', pct: 30, color: '#0db4e8' },
+  { label: 'Stablecoins', pct: 15, color: '#7dd3fc' },
+  { label: 'Alt coins', pct: 10, color: '#d99a06' },
+  { label: 'Cash reserve', pct: 5, color: '#94a3b8' },
 ];
 
 export const STATS = [
@@ -109,12 +118,10 @@ export const PORTFOLIO = {
 export const CALCULATOR = {
   title: 'Model your own growth plan',
   lead: 'Move the sliders to see how a structured plan could compound over time. Figures are illustrative - returns are never guaranteed.',
-  defaults: { deposit: 5000, monthly: 100, years: 5, rate: 10 },
+  defaults: { deposit: 180, monthly: 14300, years: 5, rate: 12 },
   ranges: {
-    deposit: { min: 250, max: 50000, step: 250 },
-    monthly: { min: 0, max: 2000, step: 50 },
-    years: { min: 1, max: 20, step: 1 },
-    rate: { min: 2, max: 20, step: 1 },
+    deposit: { min: 180, max: 9000, step: 100 },
+    monthly: { min: 0, max: 29000, step: 100 },
   },
   note: 'Illustrative figures. Actual returns vary with market conditions and can be negative.',
 };
