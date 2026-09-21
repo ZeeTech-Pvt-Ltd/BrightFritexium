@@ -3,16 +3,16 @@ import BelowTheFold from '../components/BelowTheFold.jsx';
 import Hero from '../sections/Hero.jsx';
 import MarketTicker from '../sections/MarketTicker.jsx';
 import StatsBand from '../sections/StatsBand.jsx';
-import Security from '../sections/Security.jsx';
-import Portfolio from '../sections/Portfolio.jsx';
-import Calculator from '../sections/Calculator.jsx';
+import Benefits from '../sections/Benefits.jsx';
+import StressBand from '../sections/StressBand.jsx';
+import Global from '../sections/Global.jsx';
+import PartnersStrip from '../sections/PartnersStrip.jsx';
 import ThreeSteps from '../sections/ThreeSteps.jsx';
-import Transparency from '../sections/Transparency.jsx';
-import Analyst from '../sections/Analyst.jsx';
-import Features from '../sections/Features.jsx';
-import CtaBand from '../sections/CtaBand.jsx';
+import PaymentStrip from '../sections/PaymentStrip.jsx';
 import Testimonials from '../sections/Testimonials.jsx';
 import FaqSection from '../sections/FaqSection.jsx';
+import AboutSummary from '../sections/AboutSummary.jsx';
+import Features from '../sections/Features.jsx';
 import FinalCta from '../sections/FinalCta.jsx';
 
 export default function Home() {
@@ -37,22 +37,22 @@ export default function Home() {
       {/* Below the fold: batches mount on idle, staggered so no single long task */}
       <BelowTheFold>
         <StatsBand />
-        <Security />
+        <Benefits />
       </BelowTheFold>
       <BelowTheFold delay={120}>
-        <Portfolio />
-        <Calculator />
-        <ThreeSteps />
+        <StressBand />
+        <Global />
+        <PartnersStrip />
       </BelowTheFold>
       <BelowTheFold delay={240}>
-        <Transparency />
-        <Analyst />
-        <Features />
+        <ThreeSteps />
+        <PaymentStrip />
+        <Testimonials />
       </BelowTheFold>
       <BelowTheFold delay={360}>
-        <CtaBand />
-        <Testimonials />
         <FaqSection />
+        <AboutSummary />
+        <Features />
         <FinalCta />
       </BelowTheFold>
     </>

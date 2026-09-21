@@ -9,6 +9,7 @@ import { SITE } from '../data/content.js';
 export default function RegistrationForm({
   idPrefix = 'hero',
   title = 'Create your account',
+  notice = '',
   buttonLabel = 'Sign Up now',
   showConsent = true,
 }) {
@@ -189,6 +190,7 @@ export default function RegistrationForm({
   return (
     <form className="form form-wrap" onSubmit={handleSubmit} noValidate>
       <h2 className="form__title">{title}</h2>
+      {notice && <p className="form__notice">{notice}</p>}
 
       {formError && (
         <div className="form__error" role="alert">

@@ -20,17 +20,19 @@ export const NAV_LINKS = [
 ];
 
 export const HERO = {
-  titleLines: ['BrightFritexium', 'turns digital assets into structured wealth'],
-  // Rendered as: BrightFritexium (cyan gradient) turns digital assets into structured wealth
-  sub: 'Your money sits apart from ours, guarded in offline vaults and wrapped in bank-grade encryption - while managed portfolios, staking yields and index vaults do the heavy lifting.',
-  chips: ['ASIC-regulated', 'Segregated funds', '31,000+ members', '4.6/5 rating'],
+  titleLines: ['See every trade clearly.', 'Stay in charge of every call.'],
+  sub: 'One platform for crypto, forex and global assets - with live analytics, assisted automation and real human support behind it.',
+  chips: ['ASIC-regulated', 'Segregated funds', '42M+ members', '4.7/5 rating'],
   ctaPrimary: { label: 'Sign Up now', to: '/sign-up' },
   ctaSecondary: { label: 'See how it works', to: '/how-it-works' },
+  formNotice: 'Already joined? Your account manager will call you shortly.',
+  formButton: 'Create Account',
   steps: [
     'Register in 2 minutes',
     'Verify your identity securely',
   ],
   trust: ['Custody insured', 'Transparent pricing', 'Start with A$250'],
+  payments: ['Visa', 'Mastercard', 'PayPal', 'Secure payment'],
 };
 
 // Market ticker - indicative prices, refreshed for display purposes only.
@@ -55,10 +57,10 @@ export const ALLOCATION = [
 ];
 
 export const STATS = [
-  { value: '31,000+', label: 'Active members' },
-  { value: 'A$1.8B+', label: 'Assets overseen' },
-  { value: '150+', label: 'Countries served' },
-  { value: '4.6/5', label: 'Member rating' },
+  { value: '70+', label: 'Assets supported' },
+  { value: '42M+', label: 'Verified users' },
+  { value: 'A$440M+', label: 'Transaction turnover' },
+  { value: '100+', label: 'Countries served' },
 ];
 
 export const SECURITY = {
@@ -126,23 +128,38 @@ export const CALCULATOR = {
 };
 
 export const THREE_STEPS = {
-  title: 'Get started in three calm steps',
-  lead: 'Three steps from first click to a structured portfolio - each one designed to keep you safe and in control.',
+  title: 'From signup to your first trade',
+  lead: 'Six steps, one clear path - registration, funding, strategy and tools, all in order.',
   items: [
     {
       icon: 'user',
       title: 'Create your account',
-      text: 'Two minutes, a few details, and your identity check begins.',
+      text: 'Just the basics - name, email and a phone number.',
+    },
+    {
+      icon: 'mail',
+      title: 'Confirm your email',
+      text: 'One click unlocks the charts, tools and dashboard.',
+    },
+    {
+      icon: 'unlock',
+      title: 'Enter the platform',
+      text: 'Fund from A$250. Bigger amounts are optional, and fees are always shown first.',
     },
     {
       icon: 'card',
-      title: 'Fund your vault',
-      text: 'Deposit from A$250 by bank transfer or card. Your money sits in segregated accounts.',
+      title: 'Add funds your way',
+      text: 'Bank transfer, e-wallet or card - whatever suits you.',
+    },
+    {
+      icon: 'sliders',
+      title: 'Set your strategy',
+      text: 'Pick risk levels and markets. AI signals suggest, never override.',
     },
     {
       icon: 'chart',
-      title: 'Watch it grow',
-      text: 'Your portfolio rebalances itself while you check in from any device.',
+      title: 'Explore the markets',
+      text: 'Watch live prices and plan your trades in real time.',
     },
   ],
 };
@@ -181,48 +198,43 @@ export const ANALYST = {
 };
 
 export const FEATURES = {
-  title: 'Everything your wealth needs, in one account',
-  lead: 'Six tools that used to require six different platforms - now under one secure roof.',
+  title: 'Key features of the platform',
+  lead: 'Seven things traders ask for most - all built in from day one.',
   items: [
     {
-      icon: 'calendar',
-      title: 'Recurring buys',
-      text: 'Dollar-cost averaging on autopilot. Set a schedule and let consistency do the rest.',
-      bullets: [
-        'Pick weekly, fortnightly or monthly',
-        'Pause or adjust your plan any time',
-        'Builds your position without the guesswork',
-      ],
+      icon: 'cpu',
+      title: 'AI-driven stack',
+      text: 'Technology that keeps your trading fast, accurate and always on.',
     },
     {
-      icon: 'coins',
-      title: 'Staking & yield',
-      text: 'Earn competitive APY on supported assets while you hold - rates shown before you commit.',
-    },
-    {
-      icon: 'layers',
-      title: 'Index vaults',
-      text: 'One click buys a diversified basket, rebalanced automatically as markets shift.',
-    },
-    {
-      icon: 'receipt',
-      title: 'Tax reports in one click',
-      text: 'A clean, export-ready statement your accountant will thank you for.',
-    },
-    {
-      icon: 'snowflake',
-      title: 'Cold storage',
-      text: 'The bulk of assets stay offline in guarded facilities, away from online threats.',
+      icon: 'card',
+      title: 'Flexible funding',
+      text: 'Debit cards, bank transfers and PayPal - top up however you like.',
     },
     {
       icon: 'devices',
-      title: 'Mobile app',
-      text: 'Your whole portfolio in your pocket on iOS and Android, with biometric login.',
-      bullets: [
-        'Face ID and fingerprint sign-in',
-        'Balances, alerts and statements on the go',
-        'Free on iOS and Android',
-      ],
+      title: 'Trade on any device',
+      text: 'The full platform on desktop, tablet and mobile.',
+    },
+    {
+      icon: 'target',
+      title: 'Up to 85% signal accuracy',
+      text: 'Curated signals help you spot the moves worth acting on.',
+    },
+    {
+      icon: 'globe',
+      title: 'Every instrument',
+      text: 'Forex, equities, crypto and commodities in one place.',
+    },
+    {
+      icon: 'calendar',
+      title: 'Guided setup',
+      text: 'A step-by-step guide takes you from signup to first trade.',
+    },
+    {
+      icon: 'headset',
+      title: '24/7 support',
+      text: 'Real humans on standby around the clock.',
     },
   ],
 };
@@ -235,8 +247,8 @@ export const CTA_BAND = {
 };
 
 export const TESTIMONIALS = {
-  title: 'Members across Australia, in their own words',
-  lead: 'Rated 4.6 out of 5 across 3,100+ member reviews.',
+  title: 'What our users say',
+  lead: '4.7 stars from 124 client reviews, based on 337 ratings.',
   items: [
     {
       name: 'Eleanor W.',
@@ -341,6 +353,125 @@ export const FAQS = [
     a: 'Yes - you can top up your vault any time by bank transfer or card, or set a recurring plan so it happens automatically.',
   },
 ];
+
+export const BENEFITS = {
+  title: 'Why members stay with BrightFritexium',
+  lead: 'Modern traders choose us for protection, clarity, AI tools and a clean interface.',
+  items: [
+    {
+      icon: 'shield-check',
+      title: 'Bank-grade protection',
+      text: 'Encrypted from login to withdrawal, with your funds held apart from ours.',
+    },
+    {
+      icon: 'user',
+      title: 'Trading that fits you',
+      text: 'Risk settings, markets and pace - all shaped around your goals.',
+    },
+    {
+      icon: 'cpu',
+      title: 'Smarter AI tools',
+      text: 'Analytics that surface what matters instead of burying you in noise.',
+    },
+    {
+      icon: 'zap',
+      title: 'Automation that runs all day',
+      text: 'Bots keep working around the clock, following rules you set.',
+    },
+    {
+      icon: 'chart',
+      title: 'Signals you can act on',
+      text: 'Clear, timely alerts for the moves worth your attention.',
+    },
+    {
+      icon: 'devices',
+      title: 'An interface that never fights you',
+      text: 'Clean screens and simple flows, from first click to daily use.',
+    },
+  ],
+};
+
+export const STRESS_BAND = {
+  title: 'Trading without the stress',
+  copy: 'Hold Bitcoin, Ethereum and Dogecoin with confidence - our tools handle the noise while you keep the controls.',
+  cta: { label: 'Get Started', to: '/sign-up' },
+};
+
+export const GLOBAL = {
+  title: 'Built to grow worldwide',
+  lead: 'Speed, precision and reach - wherever you trade from.',
+  items: [
+    {
+      icon: 'globe',
+      title: 'One login, every market',
+      text: 'Crypto, forex, stocks and commodities together under one roof.',
+    },
+    {
+      icon: 'zap',
+      title: 'Orders that fill fast',
+      text: 'Low-latency execution keeps your entries and exits sharp.',
+    },
+    {
+      icon: 'chart',
+      title: 'Analytics in real time',
+      text: 'Live feeds and indicators update as the market moves.',
+    },
+  ],
+};
+
+export const PAYMENTS = {
+  title: 'We accept payments from all over the world',
+  methods: ['Bank transfer', 'E-wallet', 'Card', 'PayPal'],
+};
+
+export const ABOUT_SUMMARY = {
+  title: 'About the platform',
+  lead: 'One international platform, one unified workflow - low-latency performance, layered security and a design built for beginners and advanced users alike.',
+  groups: [
+    {
+      icon: 'globe',
+      title: 'Markets',
+      items: [
+        'Top and emerging crypto assets',
+        'Forex with live feeds',
+        'Global stocks and equity options',
+        'Commodities',
+      ],
+    },
+    {
+      icon: 'zap',
+      title: 'Performance',
+      items: [
+        'Fast order processing',
+        'Continuous market data',
+        'Analytics built in',
+        'Manual and automated support',
+      ],
+    },
+    {
+      icon: 'shield-check',
+      title: 'Security',
+      items: [
+        'Encrypted communication',
+        'Identity verification and multi-layer protocols',
+        'Monitored transactions',
+        'Dependable global infrastructure',
+      ],
+    },
+  ],
+};
+
+export const RATING = {
+  stars: 4.7,
+  meta: '124 client reviews · 337 ratings',
+  quote: 'An intuitive platform with automation built in and real learning resources alongside it.',
+};
+
+export const CHAT = {
+  persona: 'Olivia',
+  role: 'Onboarding Guide',
+  greeting: "Hi, I'm Olivia - your onboarding guide. Need a hand getting started?",
+};
 
 export const FOOTER = {
   blurb:

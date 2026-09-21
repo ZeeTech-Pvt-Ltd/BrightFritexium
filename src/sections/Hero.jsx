@@ -13,7 +13,9 @@ export default function Hero() {
         <div className="hero__inner">
           <div className="hero__copy">
             <h1 className="hero__title">
-              <span className="brand">BrightFritexium</span> {HERO.titleLines[1]}
+              {HERO.titleLines[0]}
+              <br />
+              {HERO.titleLines[1]}
             </h1>
 
             <p className="hero__sub">{HERO.sub}</p>
@@ -66,11 +68,24 @@ export default function Hero() {
                   <span className="t--a" />
                   <span className="t--g" />
                 </span>
-                brightfritexium - secure my account
+                brightfritexium - create account
               </div>
               <div className="terminal__body">
-                <RegistrationForm idPrefix="hero" />
+                <RegistrationForm
+                  idPrefix="hero"
+                  notice={HERO.formNotice}
+                  buttonLabel={HERO.formButton}
+                />
               </div>
+            </div>
+
+            <div className="hero__payments">
+              {HERO.payments.map((p) => (
+                <span className="hero__pay-chip" key={p}>
+                  <Icon name="lock" size={12} />
+                  {p}
+                </span>
+              ))}
             </div>
 
             <div className="hero__float hero__float--rating">
