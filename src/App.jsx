@@ -2,7 +2,6 @@ import { Routes, Route, Navigate, useLocation } from 'react-router';
 import { Suspense, lazy, useEffect } from 'react';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
-import CookieConsent from './components/CookieConsent.jsx';
 import Home from './pages/Home.jsx';
 
 // Route-level code splitting: only the homepage bundle loads up front.
@@ -55,7 +54,6 @@ export default function App() {
         </Suspense>
       </main>
       <Footer />
-      <CookieConsent />
     </>
   );
 }

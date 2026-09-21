@@ -1608,38 +1608,6 @@ button {
   color: #5d7294;
 }
 
-/* ---------- Cookie toast ---------- */
-
-.cookie {
-  position: fixed;
-  left: 24px;
-  bottom: 24px;
-  z-index: 90;
-  max-width: 400px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 20px;
-  box-shadow: 0 20px 56px rgba(2, 6, 16, 0.6);
-}
-
-.cookie__text {
-  font-size: 13.5px;
-  color: var(--muted);
-  margin-bottom: 14px;
-}
-
-.cookie__text a {
-  color: var(--cyan);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.cookie__actions {
-  display: flex;
-  gap: 10px;
-}
-
 /* ---------- Legal pages ---------- */
 
 .legal {

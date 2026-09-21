@@ -33,7 +33,7 @@ const CONTENT = {
     },
     {
       h: '6. Cookies',
-      p: 'We use essential cookies to keep the site working and optional analytics cookies to understand how it is used. You can accept or decline analytics cookies through the consent banner, and clear or block cookies through your browser settings at any time.',
+      p: 'We use essential cookies to keep the site working and optional analytics cookies to understand how it is used. You can clear or block cookies at any time through your browser settings.',
     },
     {
       h: '7. Data retention',
