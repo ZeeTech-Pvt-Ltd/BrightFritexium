@@ -51,6 +51,7 @@ export const metadata = {
     'secure crypto platform',
   ],
   verification: { google: 'xC7DmGT1OP_BfuGAOPxCMcYikSMBswXMWDTjNtLtur8' },
+  icons: { icon: '/favicon.svg' },
   openGraph: {
     siteName: SITE.name,
     locale: 'en_AU',
