@@ -1,7 +1,10 @@
-import LegalPage from '../components/LegalPage.jsx';
+import LegalPage from '../../components/LegalPage.jsx';
+import BreadcrumbSchema from '../../components/BreadcrumbSchema.jsx';
+import { pageMeta } from '../../lib/meta.js';
 
 const CONTENT = {
   title: 'Privacy Policy',
+  seoTitle: 'Privacy Policy | BrightFritexium - Data Security',
   updated: 'Last updated: September 2026',
   keywords: ['BrightFritexium privacy policy', 'data protection Australia'],
   sections: [
@@ -50,6 +53,20 @@ const CONTENT = {
   ],
 };
 
+export const metadata = pageMeta({
+  title: CONTENT.seoTitle || `${CONTENT.title} | BrightFritexium`,
+  description:
+    CONTENT.description ||
+    `${CONTENT.title} for the BrightFritexium digital wealth platform - secure crypto investing for Australia.`,
+  path: '/privacy-policy',
+  keywords: CONTENT.keywords,
+});
+
 export default function PrivacyPolicy() {
-  return <LegalPage content={CONTENT} path="/privacy-policy" />;
+  return (
+    <>
+      <LegalPage content={CONTENT} />
+      <BreadcrumbSchema path="/privacy-policy" />
+    </>
+  );
 }

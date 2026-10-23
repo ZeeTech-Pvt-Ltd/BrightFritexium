@@ -1,3 +1,5 @@
+'use client';
+
 import { Component, Fragment } from 'react';
 
 // Mounts below-the-fold sections on deterministic timers (NOT requestIdleCallback -

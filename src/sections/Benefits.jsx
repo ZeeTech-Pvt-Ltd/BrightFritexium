@@ -1,5 +1,7 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router';
+import Link from 'next/link';
 import Reveal from '../components/Reveal.jsx';
 import SectionHead from '../components/SectionHead.jsx';
 import Icon from '../components/Icon.jsx';
@@ -106,7 +108,7 @@ export default function Benefits() {
               </Reveal>
             ))}
             <Reveal className="benefits__cta" delay={300}>
-              <Link className="btn btn--cyan" to="/sign-up">
+              <Link className="btn btn--cyan" href="/sign-up">
                 Sign Up now
                 <Icon name="arrow-right" size={17} />
               </Link>

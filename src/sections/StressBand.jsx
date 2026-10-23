@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import Link from 'next/link';
 import Reveal from '../components/Reveal.jsx';
 import Icon from '../components/Icon.jsx';
 import { STRESS_BAND } from '../data/content.js';
@@ -17,7 +17,7 @@ export default function StressBand() {
           <Reveal className="stress__copy">
             <h2 className="section-title">{STRESS_BAND.title}</h2>
             <p className="section-lead">{STRESS_BAND.copy}</p>
-            <Link className="btn btn--cyan" to={STRESS_BAND.cta.to}>
+            <Link className="btn btn--cyan" href={STRESS_BAND.cta.to}>
               {STRESS_BAND.cta.label}
               <Icon name="arrow-right" size={17} />
             </Link>

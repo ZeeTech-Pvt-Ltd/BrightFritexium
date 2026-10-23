@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import Link from 'next/link';
 import Reveal from '../components/Reveal.jsx';
 import SectionHead from '../components/SectionHead.jsx';
 import Icon from '../components/Icon.jsx';
@@ -12,7 +12,7 @@ export default function Security() {
         <div className="security__grid">
           <div className="security__copy">
             <SectionHead align="left" title={SECURITY.title} lead={SECURITY.lead} />
-            <Link className="btn btn--ghost" to="/why-invest">
+            <Link className="btn btn--ghost" href="/why-invest">
               Why invest with us
               <Icon name="arrow-right" size={17} />
             </Link>

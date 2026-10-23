@@ -1,4 +1,3 @@
-import useMeta from '../hooks/useMeta.js';
 import BelowTheFold from '../components/BelowTheFold.jsx';
 import Hero from '../sections/Hero.jsx';
 import MarketTicker from '../sections/MarketTicker.jsx';
@@ -14,22 +13,23 @@ import FaqSection from '../sections/FaqSection.jsx';
 import AboutSummary from '../sections/AboutSummary.jsx';
 import Features from '../sections/Features.jsx';
 import FinalCta from '../sections/FinalCta.jsx';
+import { pageMeta } from '../lib/meta.js';
+
+export const metadata = pageMeta({
+  title: 'BrightFritexium: Secure Digital Wealth Platform for Australia',
+  description:
+    "BrightFritexium is Australia's secure digital wealth platform. Segregated vaults, cold storage, managed portfolios and staking - protected at every layer.",
+  path: '/',
+  keywords: [
+    'crypto investing Australia',
+    'staking Australia',
+    'managed crypto portfolios',
+    'cold storage custody',
+    'digital wealth management Australia',
+  ],
+});
 
 export default function Home() {
-  useMeta({
-    title: 'BrightFritexium: Secure Digital Wealth Platform for Australia',
-    description:
-      "BrightFritexium is Australia's secure digital wealth platform. Segregated vaults, cold storage, managed portfolios and staking - protected at every layer.",
-    path: '/',
-    keywords: [
-      'crypto investing Australia',
-      'staking Australia',
-      'managed crypto portfolios',
-      'cold storage custody',
-      'digital wealth management Australia',
-    ],
-  });
-
   return (
     <>
       <Hero />

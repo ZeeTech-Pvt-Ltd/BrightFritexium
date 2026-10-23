@@ -1,5 +1,7 @@
+'use client';
+
 import { useState } from 'react';
-import { Link } from 'react-router';
+import Link from 'next/link';
 import Reveal from '../components/Reveal.jsx';
 import SectionHead from '../components/SectionHead.jsx';
 import Icon from '../components/Icon.jsx';
@@ -73,7 +75,7 @@ export default function Calculator() {
             <span className="calc__output-sub">
               With {aud(monthly)} reinvested · {aud(income)}/mo
             </span>
-            <Link className="btn btn--cyan calc__cta" to="/sign-up">
+            <Link className="btn btn--cyan calc__cta" href="/sign-up">
               Sign Up now
               <Icon name="arrow-right" size={17} />
             </Link>

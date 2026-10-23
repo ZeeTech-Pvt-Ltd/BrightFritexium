@@ -1,7 +1,10 @@
-import LegalPage from '../components/LegalPage.jsx';
+import LegalPage from '../../components/LegalPage.jsx';
+import BreadcrumbSchema from '../../components/BreadcrumbSchema.jsx';
+import { pageMeta } from '../../lib/meta.js';
 
 const CONTENT = {
   title: 'Risk Disclosure',
+  seoTitle: 'Risk Disclosure | BrightFritexium - Know the Risks',
   updated: 'Last updated: September 2026',
   keywords: ['BrightFritexium risk disclosure', 'crypto investment risk Australia'],
   sections: [
@@ -40,6 +43,20 @@ const CONTENT = {
   ],
 };
 
+export const metadata = pageMeta({
+  title: CONTENT.seoTitle || `${CONTENT.title} | BrightFritexium`,
+  description:
+    CONTENT.description ||
+    `${CONTENT.title} for the BrightFritexium digital wealth platform - secure crypto investing for Australia.`,
+  path: '/risk-disclosure',
+  keywords: CONTENT.keywords,
+});
+
 export default function RiskDisclosure() {
-  return <LegalPage content={CONTENT} path="/risk-disclosure" />;
+  return (
+    <>
+      <LegalPage content={CONTENT} />
+      <BreadcrumbSchema path="/risk-disclosure" />
+    </>
+  );
 }

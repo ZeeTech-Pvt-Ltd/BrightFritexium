@@ -28,3 +28,6 @@ Thumbs.db
 # playwright screenshots/reports
 test-results/
 playwright-report/
+
+# Next.js build output
+.next/

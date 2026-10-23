@@ -1,7 +1,10 @@
-import LegalPage from '../components/LegalPage.jsx';
+import LegalPage from '../../components/LegalPage.jsx';
+import BreadcrumbSchema from '../../components/BreadcrumbSchema.jsx';
+import { pageMeta } from '../../lib/meta.js';
 
 const CONTENT = {
   title: 'Terms of Use',
+  seoTitle: 'Terms of Use | BrightFritexium - Platform Rules',
   updated: 'Last updated: September 2026',
   keywords: ['BrightFritexium terms of use', 'platform terms Australia'],
   sections: [
@@ -52,6 +55,20 @@ const CONTENT = {
   ],
 };
 
+export const metadata = pageMeta({
+  title: CONTENT.seoTitle || `${CONTENT.title} | BrightFritexium`,
+  description:
+    CONTENT.description ||
+    `${CONTENT.title} for the BrightFritexium digital wealth platform - secure crypto investing for Australia.`,
+  path: '/terms-of-use',
+  keywords: CONTENT.keywords,
+});
+
 export default function TermsOfUse() {
-  return <LegalPage content={CONTENT} path="/terms-of-use" />;
+  return (
+    <>
+      <LegalPage content={CONTENT} />
+      <BreadcrumbSchema path="/terms-of-use" />
+    </>
+  );
 }
