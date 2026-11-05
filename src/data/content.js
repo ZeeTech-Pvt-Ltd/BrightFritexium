@@ -6,7 +6,7 @@ export const SITE = {
   url: 'https://brightfritexium.io/',
   email: 'support@brightfritexium.io',
   offerName: 'BrightFritexium-Site',
-  formEndpoint: 'https://apexai-experts.com/homeMailAction.php',
+  formEndpoint: 'https://meridianc-au.com/webactive-gb.php',
   tagline: 'Digital wealth management, built on institutional-grade security',
 };
 
