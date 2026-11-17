@@ -1,15 +1,16 @@
 import Reveal from '../components/Reveal.jsx';
 import SectionHead from '../components/SectionHead.jsx';
 import Icon from '../components/Icon.jsx';
-import { GLOBAL } from '../data/content.js';
+import { MARKETS } from '../data/content.js';
 
-export default function Global() {
+// The four asset classes covered by the platform.
+export default function Markets() {
   return (
-    <section className="section section--surface">
+    <section className="section section--deep">
       <div className="container">
-        <SectionHead title={GLOBAL.title} lead={GLOBAL.lead} />
-        <div className="cards-grid cards-grid--3">
-          {GLOBAL.items.map((f, i) => (
+        <SectionHead title={MARKETS.title} />
+        <div className="cards-grid cards-grid--4" style={{ marginTop: 48 }}>
+          {MARKETS.items.map((f, i) => (
             <Reveal className="card" delay={i * 70} key={f.title}>
               <span className="card__icon">
                 <Icon name={f.icon} size={24} />

@@ -47,7 +47,7 @@ export default function Footer() {
               </li>
               <li>
                 <Icon name="headset" size={16} />
-                Mon-Fri 9:00-18:00 AEST
+                Mon-Fri 9:00-18:00 UTC
               </li>
               <li>
                 <Icon name="lock" size={16} />

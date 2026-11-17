@@ -6,7 +6,7 @@ import { pageMeta } from '../../lib/meta.js';
 const NEXT_STEPS = [
   'Check your inbox for a confirmation email',
   'Complete identity verification (usually same-day)',
-  'Fund your vault from A$250 and choose your strategy',
+  'Fund your vault from $250 and choose your strategy',
 ];
 
 export const metadata = pageMeta({

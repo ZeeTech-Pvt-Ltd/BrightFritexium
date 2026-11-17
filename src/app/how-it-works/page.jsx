@@ -9,9 +9,9 @@ import { pageMeta } from '../../lib/meta.js';
 export const metadata = pageMeta({
   title: 'How It Works | BrightFritexium - Three Steps to Structured Wealth',
   description:
-    'Open your BrightFritexium account in two minutes, fund from A$250 and let managed vaults do the heavy lifting - with human oversight on every move.',
+    'Open your BrightFritexium account in two minutes, fund from $250 and let managed vaults do the heavy lifting - with human oversight on every move.',
   path: '/how-it-works',
-  keywords: ['how BrightFritexium works', 'open crypto account Australia', 'crypto vaults explained'],
+  keywords: ['how BrightFritexium works', 'open trading account', 'crypto vaults explained'],
 });
 
 export default function HowItWorks() {

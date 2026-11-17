@@ -6,11 +6,11 @@ import { pageMeta } from '../../lib/meta.js';
 export const metadata = pageMeta({
   title: 'Sign Up | Open a BrightFritexium Account Today',
   description:
-    'Open your BrightFritexium account in minutes. Join 31,000+ members, fund from A$250 and let managed vaults do the heavy lifting.',
+    'Open your BrightFritexium account in minutes. Join 31,000+ members, fund from $250 and let managed vaults do the heavy lifting.',
   path: '/sign-up',
   keywords: [
     'BrightFritexium sign up',
-    'open crypto account Australia',
+    'open trading account',
     'digital wealth registration',
     'BrightFritexium register',
   ],
@@ -41,7 +41,7 @@ export default function SignUp() {
             </div>
           </div>
           <p className="form__note" style={{ marginTop: 20 }}>
-            {SITE.tagline} · Minimum deposit A$250
+            {SITE.tagline} · Minimum deposit $250
           </p>
         </div>
       </section>

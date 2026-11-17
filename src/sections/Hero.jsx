@@ -20,21 +20,10 @@ export default function Hero() {
 
             <p className="hero__sub">{HERO.sub}</p>
 
-            <div className="hero__chips">
-              {HERO.chips.map((c) => (
-                <span className="chip" key={c}>
-                  {c}
-                </span>
-              ))}
-            </div>
-
             <div className="hero__cta">
               <Link className="btn btn--cyan" href={HERO.ctaPrimary.to}>
                 {HERO.ctaPrimary.label}
                 <Icon name="arrow-right" size={17} />
-              </Link>
-              <Link className="btn btn--ghost" href={HERO.ctaSecondary.to}>
-                {HERO.ctaSecondary.label}
               </Link>
             </div>
 
@@ -43,15 +32,6 @@ export default function Hero() {
                 <span key={s}>
                   {i > 0 && <span className="hero__steps-sep">→</span>}
                   {s}
-                </span>
-              ))}
-            </div>
-
-            <div className="hero__trust">
-              {HERO.trust.map((t) => (
-                <span key={t}>
-                  <Icon name="check" size={15} />
-                  {t}
                 </span>
               ))}
             </div>

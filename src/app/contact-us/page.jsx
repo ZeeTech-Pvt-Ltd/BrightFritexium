@@ -15,9 +15,9 @@ const CARDS = [
 export const metadata = pageMeta({
   title: 'Contact Us | BrightFritexium - Talk to a Human',
   description:
-    'Questions about BrightFritexium? Email our Australia-based support team - real humans reply within one business day.',
+    'Questions about BrightFritexium? Email our support team - real humans reply within one business day.',
   path: '/contact-us',
-  keywords: ['contact BrightFritexium', 'BrightFritexium support', 'crypto platform help Australia'],
+  keywords: ['contact BrightFritexium', 'BrightFritexium support', 'crypto platform help'],
 });
 
 export default function Contacts() {

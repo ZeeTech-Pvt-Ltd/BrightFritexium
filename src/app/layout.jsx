@@ -35,26 +35,25 @@ const plexMono = IBM_Plex_Mono({
 export const metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: 'BrightFritexium: Secure Digital Wealth Platform for Australia',
+    default: 'BrightFritexium - Trade Smarter With AI Trading Signals',
     template: '%s',
   },
   description:
-    "BrightFritexium is Australia's secure digital wealth platform. Segregated vaults, cold storage, managed portfolios and staking - protected at every layer.",
+    'BrightFritexium is an AI-assisted trading signals platform for crypto, forex, stocks and commodities. Complete alerts with entry, stop-loss, take-profit and a written reason.',
   keywords: [
     'BrightFritexium',
+    'AI trading signals',
+    'trading signals platform',
+    'crypto signals',
+    'forex signals',
     'digital wealth platform',
-    'crypto investing Australia',
-    'managed portfolios',
-    'staking yields',
-    'cold storage',
-    'index vaults',
     'secure crypto platform',
   ],
   verification: { google: 'xC7DmGT1OP_BfuGAOPxCMcYikSMBswXMWDTjNtLtur8' },
   icons: { icon: '/favicon.svg' },
   openGraph: {
     siteName: SITE.name,
-    locale: 'en_AU',
+    locale: 'en',
     type: 'website',
     images: [{ url: `${SITE.url}og-image.svg` }],
   },
@@ -69,7 +68,7 @@ const ORG_SCHEMA = {
   url: 'https://brightfritexium.io/',
   logo: 'https://brightfritexium.io/favicon.svg',
   description:
-    "BrightFritexium is Australia's secure digital wealth platform. Segregated vaults, cold storage, managed portfolios and staking - protected at every layer.",
+    'BrightFritexium is an AI-assisted trading signals platform for crypto, forex, stocks and commodities. Complete alerts with entry, stop-loss, take-profit and a written reason.',
 };
 
 const WEBSITE_SCHEMA = {

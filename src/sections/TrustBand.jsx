@@ -2,24 +2,25 @@ import Link from 'next/link';
 import Reveal from '../components/Reveal.jsx';
 import SectionHead from '../components/SectionHead.jsx';
 import Icon from '../components/Icon.jsx';
-import { SECURITY } from '../data/content.js';
+import { TRUST } from '../data/content.js';
 
-// Split layout: sticky intro on the left, security measures as a divider list on the right.
-export default function Security() {
+// Security & transparency: sticky intro with risk note + measure list.
+export default function TrustBand() {
   return (
     <section className="section section--deep">
       <div className="container">
         <div className="security__grid">
           <div className="security__copy">
-            <SectionHead align="left" title={SECURITY.title} lead={SECURITY.lead} />
-            <Link className="btn btn--ghost" href="/why-invest">
-              Why invest with us
+            <SectionHead align="left" title={TRUST.title} lead={TRUST.lead} />
+            <Link className="btn btn--cyan" href={TRUST.cta.to}>
+              {TRUST.cta.label}
               <Icon name="arrow-right" size={17} />
             </Link>
+            <p className="trust__risk">{TRUST.riskNote}</p>
           </div>
 
           <div className="security__list">
-            {SECURITY.items.map((f, i) => (
+            {TRUST.items.map((f, i) => (
               <Reveal className="security__row" delay={i * 60} key={f.title}>
                 <span className="security__icon">
                   <Icon name={f.icon} size={20} />

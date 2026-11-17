@@ -11,7 +11,7 @@ export const metadata = pageMeta({
   description:
     'Deposits, withdrawals, security, KYC, fees and more - the most common BrightFritexium questions answered in plain English.',
   path: '/faq',
-  keywords: ['BrightFritexium FAQ', 'crypto platform questions', 'minimum deposit Australia'],
+  keywords: ['BrightFritexium FAQ', 'crypto platform questions', 'minimum deposit'],
 });
 
 export default function Faqs() {

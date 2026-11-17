@@ -2,8 +2,8 @@ import { SITE } from '../data/content.js';
 
 const BASE_KEYWORDS = [
   'BrightFritexium',
+  'AI trading signals',
   'digital wealth platform',
-  'crypto investing Australia',
   'managed portfolios',
   'secure crypto platform',
 ];
@@ -24,7 +24,7 @@ export function pageMeta({ title, description, path = '/', keywords = [] }) {
       url,
       type: 'website',
       siteName: SITE.name,
-      locale: 'en_AU',
+      locale: 'en',
       images: [{ url: `${SITE.url}og-image.svg` }],
     },
     twitter: {

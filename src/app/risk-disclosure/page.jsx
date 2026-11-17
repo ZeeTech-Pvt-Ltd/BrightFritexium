@@ -6,7 +6,7 @@ const CONTENT = {
   title: 'Risk Disclosure',
   seoTitle: 'Risk Disclosure | BrightFritexium - Know the Risks',
   updated: 'Last updated: September 2026',
-  keywords: ['BrightFritexium risk disclosure', 'crypto investment risk Australia'],
+  keywords: ['BrightFritexium risk disclosure', 'crypto investment risk'],
   sections: [
     {
       h: '1. Capital at risk',
@@ -47,7 +47,7 @@ export const metadata = pageMeta({
   title: CONTENT.seoTitle || `${CONTENT.title} | BrightFritexium`,
   description:
     CONTENT.description ||
-    `${CONTENT.title} for the BrightFritexium digital wealth platform - secure crypto investing for Australia.`,
+    `${CONTENT.title} for the BrightFritexium digital wealth platform - secure crypto investing, worldwide.`,
   path: '/risk-disclosure',
   keywords: CONTENT.keywords,
 });

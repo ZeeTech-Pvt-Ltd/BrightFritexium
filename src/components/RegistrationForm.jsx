@@ -46,8 +46,37 @@ export default function RegistrationForm({
       if (destroyed) return;
 
       const iti = itiMod.default(input, {
-        // AU flag + dial code render instantly; a background geo check refines it later.
-        initialCountry: 'au',
+        // Flag, dial code and example placeholder all follow the visitor's
+        // IP-detected country - never a hardcoded default. In v29 auto mode
+        // is enabled by an empty initialCountry + initialCountryLookup (the
+        // old geoIpLookup success/failure API no longer exists). The lookup
+        // always resolves: US is the neutral fallback when geo fails.
+        initialCountryLookup: async () => {
+          // ipapi.co is Cloudflare-blocked on localhost, so ipwho.is leads.
+          try {
+            const res = await fetch('https://ipwho.is/', {
+              signal: AbortSignal.timeout?.(4000),
+            });
+            const data = await res.json();
+            if (data.success && data.country_code) {
+              return data.country_code.toLowerCase();
+            }
+          } catch {
+            /* fall through to the backup */
+          }
+          try {
+            const res = await fetch('https://ipapi.co/json/', {
+              signal: AbortSignal.timeout?.(3500),
+            });
+            const data = await res.json();
+            if (data.country_code) {
+              return data.country_code.toLowerCase();
+            }
+          } catch {
+            /* fall through to the neutral fallback */
+          }
+          return 'us';
+        },
       });
       itiRef.current = iti;
 
@@ -65,35 +94,6 @@ export default function RegistrationForm({
       input.addEventListener('focus', attachUtils, { once: true });
       const idle = window.requestIdleCallback || ((fn) => setTimeout(fn, 2000));
       idle(attachUtils);
-
-      // Quietly refine the country from the visitor's IP - but never clobber
-      // anything the user has already typed (ipapi.co is Cloudflare-blocked
-      // on localhost, so ipwho.is leads the chain).
-      (async () => {
-        let code = '';
-        try {
-          const res = await fetch('https://ipwho.is/');
-          const data = await res.json();
-          code = data.country_code;
-        } catch {
-          try {
-            const res = await fetch('https://ipapi.co/json/');
-            const data = await res.json();
-            code = data.country_code;
-          } catch {
-            code = '';
-          }
-        }
-        // Only update if this iti instance is still the live one (StrictMode
-        // double-mount destroys the first instance before its fetch resolves).
-        if (code && input.value.trim() === '' && itiRef.current === iti) {
-          try {
-            iti.setCountry(code);
-          } catch {
-            /* instance was torn down mid-flight */
-          }
-        }
-      })();
     })();
 
     return () => {

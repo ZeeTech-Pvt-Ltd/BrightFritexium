@@ -6,7 +6,7 @@ const CONTENT = {
   title: 'Privacy Policy',
   seoTitle: 'Privacy Policy | BrightFritexium - Data Security',
   updated: 'Last updated: September 2026',
-  keywords: ['BrightFritexium privacy policy', 'data protection Australia'],
+  keywords: ['BrightFritexium privacy policy', 'data protection'],
   sections: [
     {
       h: '1. Who we are',
@@ -57,7 +57,7 @@ export const metadata = pageMeta({
   title: CONTENT.seoTitle || `${CONTENT.title} | BrightFritexium`,
   description:
     CONTENT.description ||
-    `${CONTENT.title} for the BrightFritexium digital wealth platform - secure crypto investing for Australia.`,
+    `${CONTENT.title} for the BrightFritexium digital wealth platform - secure crypto investing, worldwide.`,
   path: '/privacy-policy',
   keywords: CONTENT.keywords,
 });

@@ -6,7 +6,7 @@ const CONTENT = {
   title: 'Terms of Use',
   seoTitle: 'Terms of Use | BrightFritexium - Platform Rules',
   updated: 'Last updated: September 2026',
-  keywords: ['BrightFritexium terms of use', 'platform terms Australia'],
+  keywords: ['BrightFritexium terms of use', 'platform terms'],
   sections: [
     {
       h: '1. Agreement',
@@ -22,7 +22,7 @@ const CONTENT = {
     },
     {
       h: '4. Deposits and withdrawals',
-      p: 'The minimum deposit is A$250. Deposits are credited once cleared, and withdrawals are returned only to an account in your name. Withdrawal requests are usually processed within one business day, subject to security checks and identity verification.',
+      p: 'The minimum deposit is $250. Deposits are credited once cleared, and withdrawals are returned only to an account in your name. Withdrawal requests are usually processed within one business day, subject to security checks and identity verification.',
     },
     {
       h: '5. Fees',
@@ -59,7 +59,7 @@ export const metadata = pageMeta({
   title: CONTENT.seoTitle || `${CONTENT.title} | BrightFritexium`,
   description:
     CONTENT.description ||
-    `${CONTENT.title} for the BrightFritexium digital wealth platform - secure crypto investing for Australia.`,
+    `${CONTENT.title} for the BrightFritexium digital wealth platform - secure crypto investing, worldwide.`,
   path: '/terms-of-use',
   keywords: CONTENT.keywords,
 });

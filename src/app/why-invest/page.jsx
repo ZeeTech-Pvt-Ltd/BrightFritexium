@@ -8,9 +8,9 @@ import { pageMeta } from '../../lib/meta.js';
 export const metadata = pageMeta({
   title: 'Why Invest | BrightFritexium - Protection at Every Layer',
   description:
-    'Segregated vaults, regulated custodians, cold storage and audited controls - see why Australian members choose BrightFritexium for digital wealth.',
+    'Segregated vaults, regulated custodians, cold storage and audited controls - see why members worldwide choose BrightFritexium for digital wealth.',
   path: '/why-invest',
-  keywords: ['why invest in crypto Australia', 'secure crypto custody', 'BrightFritexium security'],
+  keywords: ['why invest in crypto', 'secure crypto custody', 'BrightFritexium security'],
 });
 
 export default function WhyInvest() {

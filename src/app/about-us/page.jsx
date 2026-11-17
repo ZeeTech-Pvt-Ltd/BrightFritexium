@@ -25,11 +25,11 @@ const PILLARS = [
 ];
 
 export const metadata = pageMeta({
-  title: 'About Us | BrightFritexium - Secure Digital Wealth for Australia',
+  title: 'About Us | BrightFritexium - Secure Digital Wealth',
   description:
-    'BrightFritexium was built to make digital wealth structured, secure and understandable - for everyone in Australia, not just insiders.',
+    'BrightFritexium was built to make digital wealth structured, secure and understandable - for everyone, not just insiders.',
   path: '/about-us',
-  keywords: ['about BrightFritexium', 'Australian digital wealth company', 'secure crypto platform Australia'],
+  keywords: ['about BrightFritexium', 'digital wealth company', 'secure crypto platform'],
 });
 
 export default function AboutUs() {
